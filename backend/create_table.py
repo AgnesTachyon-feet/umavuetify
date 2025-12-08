@@ -14,9 +14,12 @@ def create_users_table():
                         created_at TIMESTAMP DEFAULT NOW()
                     )
                                """)
-        print("สร้างตาราง users เสร็จแล้ว")
+        print("create table users success")
     except Exception as e:
         print(f"เกิดข้อผิดพลาด: {e}")
 
     finally:
         conn.close()
+
+if __name__ == "__main__":
+    create_users_table()

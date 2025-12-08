@@ -1,2 +1,4 @@
 /.vscode
 .env
+__pycache__
+*.cpython-313.pyc
