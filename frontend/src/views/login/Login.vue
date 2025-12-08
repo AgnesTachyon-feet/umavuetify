@@ -10,12 +10,12 @@
             <form @submit.prevent="handleLogin">
                 <div class="form-group">
                     <label for="username">ชื่อผู้ใช้:</label>
-                    <input type="text" id="username" v-model="username" required />
+                    <input type="text" id="username" v-model="username" :disabled="loading" required />
                 </div>
 
                 <div class="form-group">
                     <label for="password">รหัสผ่าน:</label>
-                    <input type="password" id="password" v-model="password" required />
+                    <input type="password" id="password" v-model="password" :disabled="loading" required />
                 </div>
                 <button class="login-btn" type="submit" :disabled="loading" > {{ loading ? "กำลังเข้าสู่ระบบ..." : "เข้าสู่ระบบ" }}</button>
             </form>
