@@ -3,6 +3,7 @@ from password_utils import hash_password
 
 def add_user(user_name: str, plain_password: str, email: str):
     hashed_pw = hash_password(plain_password)
+    
     conn = get_connection()
 
     try:
@@ -10,9 +11,9 @@ def add_user(user_name: str, plain_password: str, email: str):
             with conn.cursor() as cursor:
                 cursor.execute(
                     """
-                    INSERT INTO users (user_name, password_hash, email, created_at)
+                    INSERT INTO users (user_name, password, email, created_date)
                     VALUES (%s, %s, %s, NOW())
-                    REURNING user_id
+                    RETURNING user_id
                     """,
                     (user_name, hashed_pw, email)
                 )

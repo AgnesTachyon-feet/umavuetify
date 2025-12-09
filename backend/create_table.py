@@ -2,16 +2,17 @@ from db import get_connection
 
 def create_users_table():
     conn = get_connection()
+
     try:
         with conn:
             with conn.cursor() as cursor:
                 cursor.execute("""
                     CREATE TABLE IF NOT EXISTS users (
                         user_id SERIAL PRIMARY KEY,
-                        username VARCHAR(100) UNIQUE NOT NULL,
-                        password_hash TEXT NOT NULL,
+                        user_name VARCHAR(100) UNIQUE NOT NULL,
+                        password TEXT NOT NULL,
                         email VARCHAR(100) UNIQUE NOT NULL,
-                        created_at TIMESTAMP DEFAULT NOW()
+                        created_date TIMESTAMP DEFAULT NOW()
                     )
                                """)
         print("create table users success")
