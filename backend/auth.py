@@ -8,6 +8,10 @@ auth_bp = Blueprint("auth", __name__)
 @auth_bp.route("/login", methods=["POST"])
 def login():
 
+    print("Reqquest header:", request.headers)
+    print("Request data:", request.data)
+    print("Request json:", request.json)
+
     data = request.json
     username = data.get("username")
     password = data.get("password")
@@ -21,7 +25,7 @@ def login():
             with conn.cursor() as cursor:
                 cursor.execute(
                     "SELECT user_id, password FROM users WHERE user_name = %s",
-                    (username)
+                    (username,),
                 )
                 user = cursor.fetchone()
         
